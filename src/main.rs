@@ -3,8 +3,8 @@ use rayon::prelude::*;
 extern crate image;
 
 fn main() {
-    let height: u32 = 5000;
-    let width: u32 = 5000;
+    let height: u32 = 10000;
+    let width: u32 = 10000;
     let start_x: f64 = -1.78;
     let start_y: f64 = 0.01905;
     let box_w: f64 = 0.037;
@@ -64,8 +64,9 @@ fn draw_counts(set: Vec<i32>, w: u32, h: u32) {
         if pnt == -1 {
             *pix = image::Rgb([255 as u8,255 as u8,255 as u8]);
         } else {
-            let b: u8 = (pnt % 255) as u8;
-            *pix = image::Rgb([b,b,b]);
+            let b: u8 = (((pnt * 4)) % 256) as u8;
+            let r: u8 = (((pnt * 2)) % 256) as u8;
+            *pix = image::Rgb([b,0,r]);
         }
     }
 
